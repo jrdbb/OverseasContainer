@@ -44,7 +44,7 @@ is_command() {
 
 system_package_install() {
 	PACKAGES=(aria2 git unzip wget)
-	sudo apt-get -y install ${PACKAGES[@]}
+	apt-get -y install ${PACKAGES[@]}
 
 }
 
