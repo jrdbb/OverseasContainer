@@ -1,1 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/cpp:0-ubuntu-22.04
+FROM mcr.microsoft.com/devcontainers/cpp:0-ubuntu-20.04
