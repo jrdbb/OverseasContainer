@@ -17,3 +17,4 @@ RUN wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
     rm -rf ta-lib/ ta-lib-0.4.0-src.tar.gz
 
 USER $NB_USER
+ENV PATH=$PATH:$HOME/.local/bin
