@@ -4,8 +4,6 @@
 #
 #    pip-compile
 #
---index-url https://pypi.tuna.tsinghua.edu.cn/simple
-
 alembic==1.13.1
     # via jupyterhub
 annotated-types==0.7.0
@@ -34,7 +32,7 @@ beautifulsoup4==4.12.3
     # via nbconvert
 bleach==6.1.0
     # via nbconvert
-certifi==2024.6.2
+certifi==2024.7.4
     # via
     #   httpcore
     #   httpx
