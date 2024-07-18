@@ -53,7 +53,7 @@ RUN apt-get update \
         tini \
         # requirement for nbgitpuller
         git git-lfs \
-        build-essential nodejs wget default-jre procps openssh-client vim tmux gfortran \
+        build-essential nodejs wget default-jre procps openssh-client vim tmux gfortran libopenblas-dev \
  && rm -rf /var/lib/apt/lists/*
 
 # install wheels built in the build-stage
