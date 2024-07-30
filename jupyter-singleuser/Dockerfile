@@ -51,6 +51,7 @@ RUN apt-get update \
         dnsutils \
         iputils-ping \
         tini \
+        curl \
         # requirement for nbgitpuller
         git git-lfs \
         build-essential nodejs wget default-jre procps openssh-client vim tmux gfortran libopenblas-dev \
