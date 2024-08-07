@@ -75,6 +75,18 @@ RUN wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
     cd .. && \
     rm -rf ta-lib/ ta-lib-0.4.0-src.tar.gz
 
+RUN curl -fsSL https://code-server.dev/install.sh | sh && \
+    rm -rf "${HOME}/.cache"
+ENV CODE_WORKINGDIR="${HOME}"
+
+ARG code_server_proxy_wheel="jupyter_codeserver_proxy-1.0b3-py3-none-any.whl"
+COPY ${code_server_proxy_wheel} .
+
+# jupyter-server-proxy + code-server proxy install ----
+RUN pip install --no-cache-dir jupyter-server-proxy && \
+    pip install --no-cache-dir "/${code_server_proxy_wheel}" && \
+    rm "${code_server_proxy_wheel}"
+
 WORKDIR ${HOME}
 USER ${NB_USER}
 ENV PATH=$PATH:$HOME/.local/bin
