@@ -4,8 +4,6 @@
 #
 #    pip-compile
 #
---index-url https://pypi.tuna.tsinghua.edu.cn/simple
-
 alembic==1.13.1
     # via jupyterhub
 annotated-types==0.7.0
@@ -137,7 +135,7 @@ jupyter-server==2.14.1
     #   notebook-shim
 jupyter-server-terminals==0.5.3
     # via jupyter-server
-jupyterhub==5.0.0
+jupyterhub==5.1.0
     # via -r requirements.in
 jupyterlab==4.2.2
     # via -r requirements.in
