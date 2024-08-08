@@ -48,6 +48,7 @@ RUN apt-get update \
  && apt-get upgrade --yes \
  && apt-get install --yes --no-install-recommends \
         ca-certificates \
+        libssl-dev \
         dnsutils \
         iputils-ping \
         tini \
