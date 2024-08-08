@@ -17,7 +17,7 @@ def setup_codeserver():
         if working_dir is None:
             working_dir = os.getenv("JUPYTER_SERVER_ROOT", ".")
 
-        return [full_path, f'--port={port}', "--cert", "--auth", "none", working_dir ]
+        return [full_path, "--socket={unix_socket}", "--auth", "none", "--disable-update-check", "--disable-telemetry", working_dir]
 
     return {
         'command': _codeserver_command,
@@ -26,5 +26,7 @@ def setup_codeserver():
             'title': 'VS Code IDE',
             'icon_path': os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                       'icons', 'vscode.svg')
-        }
+        },
+        "unix_socket": "/tmp/code-server-ipc.sock",
+        "new_browser_tab": True
     }
