@@ -80,7 +80,7 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh && \
     rm -rf "${HOME}/.cache"
 ENV CODE_WORKINGDIR="${HOME}"
 
-COPY jupyter_codeserver_proxy .
+COPY jupyter_codeserver_proxy ./jupyter_codeserver_proxy
 
 # jupyter-server-proxy + code-server proxy install ----
 RUN pip install --no-cache-dir jupyter-server-proxy && \
