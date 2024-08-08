@@ -55,7 +55,7 @@ RUN apt-get update \
         curl \
         # requirement for nbgitpuller
         git git-lfs \
-        build-essential nodejs wget default-jre procps openssh-client vim tmux gfortran libopenblas-dev \
+        build-essential pkg-config nodejs wget default-jre procps openssh-client vim tmux gfortran libopenblas-dev \
  && rm -rf /var/lib/apt/lists/*
 
 # install wheels built in the build-stage
