@@ -53,6 +53,7 @@ RUN apt-get update \
         iputils-ping \
         tini \
         curl \
+        zsh \
         # requirement for nbgitpuller
         git git-lfs \
         build-essential cmake pkg-config nodejs wget default-jre procps openssh-client vim tmux gfortran libopenblas-dev \
@@ -89,6 +90,7 @@ RUN pip install --no-cache-dir jupyter-server-proxy && \
 WORKDIR ${HOME}
 USER ${NB_USER}
 ENV PATH=$PATH:$HOME/.local/bin
+ENV SHELL=/usr/bin/zsh
 
 EXPOSE 8888
 ENTRYPOINT ["tini", "--"]
