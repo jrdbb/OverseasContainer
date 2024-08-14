@@ -10,7 +10,7 @@
 # NOTE: If the image version is updated, also update it in ci/refreeze and
 #       hub's Dockerfile!
 #
-FROM python:3.11 as build-stage
+FROM python:3.11-slim as build-stage
 
 # Build wheels
 #
