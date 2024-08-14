@@ -54,7 +54,7 @@ RUN apt-get update \
         tini \
         curl \
         zsh \
-        # requirement for nbgitpuller
+        clang lld \
         git git-lfs \
         build-essential cmake pkg-config nodejs wget default-jre procps openssh-client vim tmux gfortran libopenblas-dev \
  && rm -rf /var/lib/apt/lists/*
