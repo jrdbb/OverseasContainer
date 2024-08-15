@@ -53,6 +53,7 @@ RUN apt-get update \
         iputils-ping \
         tini \
         curl \
+        fio \
         zsh \
         clang lld \
         git git-lfs \
