@@ -5,9 +5,6 @@
 FROM alpine:latest
 
 ENV MNT_POINT /var/s3
-ENV IAM_ROLE=none
-
-
 
 RUN apk --update add bash fuse libcurl libxml2 libstdc++ libgcc alpine-sdk fuse-dev curl
 
