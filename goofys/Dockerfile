@@ -9,8 +9,9 @@ ENV IAM_ROLE=none
 
 
 
-RUN apk --update add bash fuse libcurl libxml2 libstdc++ libgcc alpine-sdk libxml2-dev fuse-dev curl-dev && \
-    curl -L -O https://github.com/kahing/goofys/releases/latest/download/goofys && \
+RUN apk --update add bash fuse libcurl libxml2 libstdc++ libgcc alpine-sdk fuse-dev curl
+
+RUN curl -L -O https://github.com/kahing/goofys/releases/latest/download/goofys && \
     mv goofys /usr/bin && chmod 0755 /usr/bin/goofys && \
     curl -L -O https://github.com/kahing/catfs/releases/download/v0.8.0/catfs && \
     mv catfs /usr/bin && chmod 0755 /usr/bin/catfs
