@@ -57,17 +57,18 @@ RUN apt-get update \
         zsh \
         clang lld \
         git git-lfs \
-        build-essential cmake pkg-config nodejs wget default-jre procps openssh-client vim tmux gfortran libopenblas-dev \
+        build-essential pkg-config nodejs wget default-jre procps openssh-client vim tmux gfortran libopenblas-dev \
  && rm -rf /var/lib/apt/lists/*
 
-# install wheels built in the build-stage
-COPY requirements.txt /tmp/requirements.txt
-ARG PIP_CACHE_DIR=/tmp/pip-cache
-RUN --mount=type=cache,target=${PIP_CACHE_DIR} \
-    --mount=type=cache,from=build-stage,source=/tmp/wheels,target=/tmp/wheels \
-    pip install \
-        --find-links=/tmp/wheels/ \
-        -r /tmp/requirements.txt
+#  install cmake from source
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.30.2/cmake-3.30.2.tar.gz && \
+    tar -xzf cmake-3.30.2.tar.gz && \
+    cd cmake-3.30.2/ && \
+    ./configure && \
+    make && \
+    make install && \
+    cd .. && \
+    rm -rf cmake-3.30.2/ cmake-3.30.2.tar.gz
 
 RUN wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
     tar -xzf ta-lib-0.4.0-src.tar.gz && \
@@ -77,6 +78,15 @@ RUN wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
     make install && \
     cd .. && \
     rm -rf ta-lib/ ta-lib-0.4.0-src.tar.gz
+
+# install wheels built in the build-stage
+COPY requirements.txt /tmp/requirements.txt
+ARG PIP_CACHE_DIR=/tmp/pip-cache
+RUN --mount=type=cache,target=${PIP_CACHE_DIR} \
+    --mount=type=cache,from=build-stage,source=/tmp/wheels,target=/tmp/wheels \
+    pip install \
+        --find-links=/tmp/wheels/ \
+        -r /tmp/requirements.txt
 
 RUN curl -fsSL https://code-server.dev/install.sh | sh && \
     rm -rf "${HOME}/.cache"
