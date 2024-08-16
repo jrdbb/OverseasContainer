@@ -44,7 +44,9 @@ RUN adduser \
         --force-badname \
         ${NB_USER}
 
-RUN apt-get update \
+RUN . /etc/os-release && echo "deb http://deb.debian.org/debian $(echo ${VERSION_CODENAME:-stretch})-backports main" >> /etc/apt/sources.list
+
+RUN . /etc/os-release && apt-get update \
  && apt-get upgrade --yes \
  && apt-get install --yes --no-install-recommends \
         ca-certificates \
@@ -58,17 +60,8 @@ RUN apt-get update \
         clang lld \
         git git-lfs \
         build-essential pkg-config nodejs wget default-jre procps openssh-client vim tmux gfortran libopenblas-dev \
+ && apt-get install --yes --no-install-recommends -t ${VERSION_CODENAME:-stretch}-backports cmake \
  && rm -rf /var/lib/apt/lists/*
-
-#  install cmake from source
-RUN wget https://github.com/Kitware/CMake/releases/download/v3.30.2/cmake-3.30.2.tar.gz && \
-    tar -xzf cmake-3.30.2.tar.gz && \
-    cd cmake-3.30.2/ && \
-    ./configure && \
-    make && \
-    make install && \
-    cd .. && \
-    rm -rf cmake-3.30.2/ cmake-3.30.2.tar.gz
 
 RUN wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
     tar -xzf ta-lib-0.4.0-src.tar.gz && \
