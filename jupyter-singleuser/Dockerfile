@@ -57,6 +57,8 @@ RUN . /etc/os-release && apt-get update \
         curl \
         fio \
         zsh \
+        lz4 \
+        less \
         clang lld \
         git git-lfs \
         build-essential pkg-config nodejs wget default-jre procps openssh-client vim tmux gfortran libopenblas-dev \
