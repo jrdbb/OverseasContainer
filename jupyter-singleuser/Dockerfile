@@ -54,6 +54,7 @@ RUN . /etc/os-release && apt-get update \
         dnsutils \
         iputils-ping \
         tini \
+        htop \
         curl \
         fio \
         zsh \
