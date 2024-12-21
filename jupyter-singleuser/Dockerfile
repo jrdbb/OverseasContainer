@@ -35,7 +35,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 ENV NB_USER=jovyan \
     NB_UID=1000 \
+    NB_GID=100 \
     HOME=/home/jovyan
+
 RUN adduser \
         --disabled-password \
         --gecos "Default user" \
@@ -43,6 +45,9 @@ RUN adduser \
         --home ${HOME} \
         --force-badname \
         ${NB_USER}
+
+COPY fix-permissions /usr/local/bin/fix-permissions
+RUN chmod a+rx /usr/local/bin/fix-permissions
 
 RUN . /etc/os-release && echo "deb http://deb.debian.org/debian $(echo ${VERSION_CODENAME:-stretch})-backports main" >> /etc/apt/sources.list
 
@@ -93,6 +98,9 @@ COPY jupyter_codeserver_proxy ./jupyter_codeserver_proxy
 # jupyter-server-proxy + code-server proxy install ----
 RUN pip install --no-cache-dir jupyter-server-proxy && \
     pip install --no-cache-dir ./jupyter_codeserver_proxy && rm -rf jupyter_codeserver_proxy
+
+COPY jupyter_notebook_config.py /etc/jupyter/
+RUN fix-permissions /etc/jupyter/
 
 WORKDIR ${HOME}
 USER ${NB_USER}
