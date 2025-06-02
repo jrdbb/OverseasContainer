@@ -17,6 +17,7 @@ RUN export G_SLICE=always-malloc \
     nomkl \
     cmake \
     dask=${DASK_VERSION} \
+    scikit-learn \
     lightgbm \
     cachey \
     streamz \
