@@ -19,6 +19,7 @@ RUN export G_SLICE=always-malloc \
     dask=${DASK_VERSION} \
     scikit-learn \
     lightgbm \
+    s3fs \
     cachey \
     streamz \
     && mamba clean -tipy \
