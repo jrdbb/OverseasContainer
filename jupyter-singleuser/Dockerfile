@@ -102,6 +102,8 @@ RUN pip install --no-cache-dir jupyter-server-proxy && \
 COPY jupyter_notebook_config.py /etc/jupyter/
 RUN fix-permissions /etc/jupyter/
 
+RUN curl -LO https://dl.k8s.io/release/v1.28.0/bin/linux/amd64/kubectl && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && rm kubectl
+
 WORKDIR ${HOME}
 USER ${NB_USER}
 ENV PATH=$PATH:$HOME/.local/bin
