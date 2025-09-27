@@ -4,7 +4,6 @@
 #
 #    pip-compile --cert=None --client-cert=None --index-url=None --pip-args=None
 #
---index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 
 alembic==1.13.1
     # via jupyterhub
