@@ -65,7 +65,7 @@ RUN . /etc/os-release && apt-get update \
         zsh \
         lz4 \
         less \
-        clang lld \
+        clang lld ripgrep \
         git git-lfs \
         build-essential pkg-config nodejs npm wget default-jre procps openssh-client vim tmux gfortran libopenblas-dev \
  && apt-get install --yes --no-install-recommends -t ${VERSION_CODENAME:-stretch}-backports cmake \
