@@ -67,7 +67,7 @@ RUN . /etc/os-release && apt-get update \
         less \
         clang lld \
         git git-lfs \
-        build-essential pkg-config nodejs wget default-jre procps openssh-client vim tmux gfortran libopenblas-dev \
+        build-essential pkg-config nodejs npm wget default-jre procps openssh-client vim tmux gfortran libopenblas-dev \
  && apt-get install --yes --no-install-recommends -t ${VERSION_CODENAME:-stretch}-backports cmake \
  && rm -rf /var/lib/apt/lists/*
 
@@ -103,6 +103,8 @@ COPY jupyter_notebook_config.py /etc/jupyter/
 RUN fix-permissions /etc/jupyter/
 
 RUN curl -LO https://dl.k8s.io/release/v1.28.0/bin/linux/amd64/kubectl && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && rm kubectl
+
+RUN npm i -g @openai/codex
 
 WORKDIR ${HOME}
 USER ${NB_USER}
