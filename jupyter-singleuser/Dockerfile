@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:1.3
-# VULN_SCAN_TIME=2024-01-17_12:44:13
+# VULN_SCAN_TIME=2026-03-02_05:27:27
 
 
 # The build stage
@@ -10,7 +10,7 @@
 # NOTE: If the image version is updated, also update it in ci/refreeze and
 #       hub's Dockerfile!
 #
-FROM python:3.13-slim as build-stage
+FROM python:3.14-trixie as build-stage
 
 # Build wheels
 #
@@ -30,7 +30,7 @@ RUN --mount=type=cache,target=${PIP_CACHE_DIR} \
 # The final stage
 # ---------------
 #
-FROM python:3.13-slim
+FROM python:3.14-slim-trixie
 ENV DEBIAN_FRONTEND=noninteractive
 
 ENV NB_USER=jovyan \
