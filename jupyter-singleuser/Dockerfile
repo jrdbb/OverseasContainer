@@ -10,7 +10,7 @@
 # NOTE: If the image version is updated, also update it in ci/refreeze and
 #       hub's Dockerfile!
 #
-FROM python:3.11-slim as build-stage
+FROM python:3.13-slim as build-stage
 
 # Build wheels
 #
@@ -30,7 +30,7 @@ RUN --mount=type=cache,target=${PIP_CACHE_DIR} \
 # The final stage
 # ---------------
 #
-FROM python:3.11-slim
+FROM python:3.13-slim
 ENV DEBIAN_FRONTEND=noninteractive
 
 ENV NB_USER=jovyan \
