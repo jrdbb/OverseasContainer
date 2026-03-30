@@ -1,7 +1,7 @@
 ARG BASE_CONTAINER=condaforge/mambaforge:23.3.1-1
 FROM $BASE_CONTAINER
 
-ARG python="3.14.3"
+ARG python="3.13.12"
 ARG release="2026.3.0"
 
 SHELL ["/bin/bash", "-c"]
