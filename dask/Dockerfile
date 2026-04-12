@@ -10,6 +10,8 @@ ENV PATH /opt/conda/bin:$PATH
 ENV PYTHON_VERSION=${python}
 ENV DASK_VERSION=${release}
 
+COPY requirements.txt requirements.txt
+
 RUN export G_SLICE=always-malloc \
     && mamba install -y \
     "mamba>=0.27.0" \
