@@ -20,17 +20,17 @@ RUN export G_SLICE=always-malloc \
     cmake \
     dask=${DASK_VERSION} \
     jupyter-server-proxy \
-    scikit-learn \
-    lightgbm \
-    s3fs \
     cachey \
     streamz \
+    pip \
+    && python -m pip install --no-cache-dir -r requirements.txt \
     && mamba clean -tipy \
     && find /opt/conda/ -type f,l -name '*.a' -delete \
     && find /opt/conda/ -type f,l -name '*.pyc' -delete \
     && find /opt/conda/ -type f,l -name '*.js.map' -delete \
     && find /opt/conda/lib/python*/site-packages/bokeh/server/static -type f,l -name '*.js' -not -name '*.min.js' -delete \
-    && rm -rf /opt/conda/pkgs
+    && rm -rf /opt/conda/pkgs \
+    && rm -f requirements.txt
 
 COPY prepare.sh /usr/bin/prepare.sh
 
