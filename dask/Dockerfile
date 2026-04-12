@@ -2,13 +2,11 @@ ARG BASE_CONTAINER=condaforge/mambaforge:23.3.1-1
 FROM $BASE_CONTAINER
 
 ARG python="3.13.12"
-ARG release="2026.3.0"
 
 SHELL ["/bin/bash", "-c"]
 
 ENV PATH /opt/conda/bin:$PATH
 ENV PYTHON_VERSION=${python}
-ENV DASK_VERSION=${release}
 
 COPY requirements.txt requirements.txt
 
@@ -18,12 +16,10 @@ RUN export G_SLICE=always-malloc \
     python=${PYTHON_VERSION} \
     nomkl \
     cmake \
-    dask=${DASK_VERSION} \
     jupyter-server-proxy \
     cachey \
     streamz \
-    pip \
-    && python -m pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir -r requirements.txt \
     && mamba clean -tipy \
     && find /opt/conda/ -type f,l -name '*.a' -delete \
     && find /opt/conda/ -type f,l -name '*.pyc' -delete \
