@@ -15,6 +15,7 @@ RUN export G_SLICE=always-malloc \
     "mamba>=0.27.0" \
     python=${PYTHON_VERSION} \
     nomkl \
+    bokeh \
     cmake \
     jupyter-server-proxy \
     cachey \
